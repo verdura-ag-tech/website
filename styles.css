@@ -1027,7 +1027,7 @@ input:focus, textarea:focus{
   inset: 0;
   z-index: 0;
 
-  background-image: url("assets/Turf.png");
+  background-image: url("Turf.png");
   background-repeat: no-repeat;
 
   /* 🔑 Key changes */
