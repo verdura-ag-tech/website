@@ -119,7 +119,10 @@ img { max-width: 100%; display: block; }
   background: #f7f8fb;
 }
 
-.w100{ width: 100%; }
+.w100{
+  width: 100%; 
+  padding-top: 10px;
+}
 
 /* ===== Hero ===== */
 .hero{
@@ -854,3 +857,158 @@ input:focus, textarea:focus{
   }
 }
 
+/* Make select look like your inputs */
+.form select {
+  width: 100%;
+  padding: 14px 16px;            /* match your input padding */
+  border: 1px solid #e6e8ee;     /* match your input border */
+  border-radius: 14px;          /* match your input radius */
+  background: #fff;             /* match your input background */
+  color: inherit;
+  font: inherit;
+  line-height: 1.2;
+
+  /* remove default dropdown styling */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  /* add your own arrow + spacing */
+  padding-right: 44px;
+  background-image:
+    linear-gradient(45deg, transparent 50%, #6b7280 50%),
+    linear-gradient(135deg, #6b7280 50%, transparent 50%);
+  background-position:
+    calc(100% - 22px) 55%,
+    calc(100% - 16px) 55%;
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+}
+
+/* placeholder-like color for "Select one" */
+.form select:invalid {
+  color: #9aa3b2;               /* match your placeholder gray */
+}
+
+/* focus state (match your inputs) */
+.form select:focus {
+  outline: none;
+  border-color: #c7cbe0;        /* tweak to match your focus color */
+  box-shadow: 0 0 0 3px rgba(31, 41, 55, 0.08); /* subtle ring */
+}
+
+/* ===== Technology Diagram (callout style like your reference images) ===== */
+.tech-diagram{
+  margin-top: 26px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+/* subtle "soil" strip */
+.tech-soil{
+  height: 86px;
+  background:
+    linear-gradient(#ffffff, #ffffff 35%),
+    radial-gradient(120px 40px at 20% 20%, rgba(34,197,94,0.10), transparent 60%),
+    radial-gradient(160px 60px at 60% 30%, rgba(34,197,94,0.08), transparent 65%),
+    #fff;
+  border-bottom: 1px solid var(--line);
+}
+
+/* big stage for image + callouts */
+.tech-visual{
+  position: relative;
+  min-height: 520px;
+  padding: 26px 18px 34px;
+  background:
+    radial-gradient(900px 520px at 50% 45%, rgba(34,197,94,0.10), transparent 60%),
+    #ffffff;
+}
+
+/* image */
+.tech-img{
+  display: block;
+  max-width: 360px;
+  width: min(360px, 70%);
+  margin: 0 auto;
+  filter: drop-shadow(0 18px 35px rgba(12,18,32,0.18));
+}
+
+/* callout cards */
+.callout{
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  width: min(360px, 42vw);
+  padding: 14px 16px;
+
+  background: rgba(255,255,255,0.96);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 18px 45px rgba(12,18,32,0.12);
+  backdrop-filter: blur(10px);
+}
+
+.callout-ic{
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: rgba(34,197,94,0.12);
+  font-weight: 900;
+  flex: 0 0 auto;
+}
+
+.callout-title{
+  font-weight: 950;
+  letter-spacing: -0.02em;
+  color: #0b1220;
+}
+
+.callout-sub{
+  margin-top: 2px;
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+/* positions — tune these to match your exact image proportions */
+.c1{ top: 40px;  left: 28px; }
+.c2{ top: 40px;  right: 28px; }
+
+.c3{ top: 160px; left: 28px; }
+.c5{ top: 160px; right: 28px; }
+
+.c4{ bottom: 60px; left: 28px; }
+.c6{ bottom: 60px; right: 28px; }
+
+.tech-foot{
+  padding: 14px 18px 18px;
+  border-top: 1px solid var(--line);
+  background: #fff;
+}
+
+/* Mobile: remove absolute positioning and stack callouts cleanly */
+@media (max-width: 980px){
+  .tech-visual{
+    min-height: auto;
+    padding: 22px 16px 18px;
+  }
+
+  .callout{
+    position: static;
+    width: 100%;
+    margin-top: 12px;
+  }
+
+  .tech-img{
+    width: min(320px, 90%);
+    margin-bottom: 10px;
+  }
+}
