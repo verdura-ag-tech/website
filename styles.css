@@ -512,6 +512,7 @@ label{
   font-weight: 700;
   color: #1b2642;
 }
+
 input, textarea{
   font: inherit;
   padding: 12px 12px;
@@ -897,9 +898,9 @@ input:focus, textarea:focus{
   box-shadow: 0 0 0 3px rgba(31, 41, 55, 0.08); /* subtle ring */
 }
 
-/* ===== Technology Diagram (callout style like your reference images) ===== */
+/* ===== Technology diagram with real soil cutaway ===== */
 .tech-diagram{
-  margin-top: 26px;
+  position: relative;
   border: 1px solid var(--line);
   border-radius: 18px;
   background: #fff;
@@ -907,98 +908,95 @@ input:focus, textarea:focus{
   overflow: hidden;
 }
 
-/* subtle "soil" strip */
-.tech-soil{
-  height: 86px;
+/* Background soil that fills the bottom portion (not just a strip) */
+.tech-soil-bg{
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  /* Two layers:
+     1) top fade (so callouts are readable)
+     2) the soil image anchored to bottom */
   background:
-    linear-gradient(#ffffff, #ffffff 35%),
-    radial-gradient(120px 40px at 20% 20%, rgba(34,197,94,0.10), transparent 60%),
-    radial-gradient(160px 60px at 60% 30%, rgba(34,197,94,0.08), transparent 65%),
-    #fff;
-  border-bottom: 1px solid var(--line);
+    linear-gradient(
+      to bottom,
+      rgba(255,255,255,0.98) 0%,
+      rgba(255,255,255,0.92) 35%,
+      rgba(255,255,255,0.65) 55%,
+      rgba(255,255,255,0.00) 70%
+    ),
+    url("assets/turgf-removebg-preview.png");
+
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: 100% 44%; /* ✅ this is the key: soil takes ~bottom 44% */
 }
 
-/* big stage for image + callouts */
+/* Foreground stage */
 .tech-visual{
   position: relative;
-  min-height: 520px;
-  padding: 26px 18px 34px;
-  background:
-    radial-gradient(900px 520px at 50% 45%, rgba(34,197,94,0.10), transparent 60%),
-    #ffffff;
+  z-index: 1;
+  min-height: 720px; /* more height so the soil has room */
+  padding: 46px 18px 120px; /* bottom padding so probe doesn't collide with soil edge */
+  display: grid;
+  place-items: center;
 }
 
-/* image */
+/* Probe image */
 .tech-img{
-  display: block;
-  max-width: 360px;
-  width: min(360px, 70%);
-  margin: 0 auto;
-  filter: drop-shadow(0 18px 35px rgba(12,18,32,0.18));
+  width: min(440px, 68%);
+  max-width: 440px;
+  transform: translateY(12px); /* pushes probe a bit downward into soil */
+  filter: drop-shadow(0 24px 50px rgba(0,0,0,0.22));
 }
 
-/* callout cards */
+/* Callouts */
 .callout{
   position: absolute;
+  z-index: 2;
+  width: min(380px, 42vw);
   display: flex;
-  align-items: center;
   gap: 12px;
+  align-items: center;
 
-  width: min(360px, 42vw);
   padding: 14px 16px;
-
-  background: rgba(255,255,255,0.96);
+  border-radius: 16px;
   border: 1px solid var(--line);
-  border-radius: 14px;
-  box-shadow: 0 18px 45px rgba(12,18,32,0.12);
+  background: rgba(255,255,255,0.95);
+  box-shadow: 0 18px 45px rgba(12,18,32,0.14);
   backdrop-filter: blur(10px);
 }
 
-.callout-ic{
-  width: 38px;
-  height: 38px;
-  border-radius: 12px;
-  display: grid;
-  place-items: center;
-  background: rgba(34,197,94,0.12);
-  font-weight: 900;
-  flex: 0 0 auto;
-}
+/* Positioning tuned so it looks like your reference */
+.c1{ top: 26px;  left: 26px; }
+.c2{ top: 26px;  right: 26px; }
 
-.callout-title{
-  font-weight: 950;
-  letter-spacing: -0.02em;
-  color: #0b1220;
-}
+.c3{ top: 150px; left: 26px; }
+.c5{ top: 150px; right: 26px; }
 
-.callout-sub{
-  margin-top: 2px;
-  font-size: 13px;
-  color: var(--muted);
-  font-weight: 700;
-}
-
-/* positions — tune these to match your exact image proportions */
-.c1{ top: 40px;  left: 28px; }
-.c2{ top: 40px;  right: 28px; }
-
-.c3{ top: 160px; left: 28px; }
-.c5{ top: 160px; right: 28px; }
-
-.c4{ bottom: 60px; left: 28px; }
-.c6{ bottom: 60px; right: 28px; }
+.c4{ bottom: 220px; left: 26px; }  /* ✅ moved up so it’s above soil */
+.c6{ bottom: 220px; right: 26px; } /* ✅ moved up so it’s above soil */
 
 .tech-foot{
+  position: relative;
+  z-index: 2;
   padding: 14px 18px 18px;
   border-top: 1px solid var(--line);
-  background: #fff;
+  background: rgba(255,255,255,0.92);
 }
 
-/* Mobile: remove absolute positioning and stack callouts cleanly */
+/* Mobile: stack the callouts below image (keep soil visible) */
 @media (max-width: 980px){
   .tech-visual{
     min-height: auto;
-    padding: 22px 16px 18px;
+    padding: 22px 16px 22px;
+    place-items: start center;
+  }
+
+  .tech-img{
+    width: min(360px, 92%);
+    transform: none;
+    margin: 10px auto 6px;
   }
 
   .callout{
@@ -1007,8 +1005,133 @@ input:focus, textarea:focus{
     margin-top: 12px;
   }
 
-  .tech-img{
-    width: min(320px, 90%);
-    margin-bottom: 10px;
+  .tech-soil-bg{
+    background-size: 100% 42%;
   }
 }
+
+/* ===== Soil cutaway integration ===== */
+
+.tech-diagram{
+  position: relative;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+/* soil background image */
+.tech-soil-bg{
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  background-image: url("assets/Turf.png");
+  background-repeat: no-repeat;
+
+  /* 🔑 Key changes */
+  background-size: 120% auto;      /* zoom in slightly */
+  background-position: center 85%; /* push image DOWN so grass line drops */
+
+  /* Fade top so UI stays readable */
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 30%,
+    black 100%
+  );
+
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 30%,
+    black 100%
+  );
+}
+
+.tech-soil-bg::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 48%;
+  height: 18px;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.18),
+    transparent
+  );
+}
+
+
+/* foreground content */
+.tech-visual{
+  position: relative;
+  z-index: 1;
+  min-height: 560px;
+  padding: 40px 18px 60px;
+  display: flex;
+  justify-content: center;
+}
+
+/* probe image */
+.tech-img{
+  max-width: 360px;
+  width: min(360px, 70%);
+  filter: drop-shadow(0 22px 38px rgba(0,0,0,0.25));
+}
+
+.tech-img{
+  position: relative;
+  z-index: 2;
+  transform: translateY(-28px); /* head higher above soil */
+}
+
+
+/* callouts float above soil */
+.callout{
+  position: absolute;
+  z-index: 2;
+  background: rgba(255,255,255,0.96);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 14px 16px;
+  box-shadow: 0 18px 45px rgba(12,18,32,0.18);
+  backdrop-filter: blur(10px);
+  display: flex;
+  gap: 12px;
+  width: min(360px, 42vw);
+}
+
+/* positions (tuned for soil image) */
+.c1{ top: 32px; left: 26px; }
+.c2{ top: 32px; right: 26px; }
+
+.c3{ top: 170px; left: 26px; }
+.c5{ top: 170px; right: 26px; }
+
+.c4{ bottom: 80px; left: 26px; }
+.c6{ bottom: 80px; right: 26px; }
+
+/* mobile: stack cleanly */
+@media (max-width: 980px){
+  .tech-soil-bg{
+    background-position: center bottom;
+    background-size: cover;
+  }
+
+  .tech-visual{
+    min-height: auto;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .callout{
+    position: static;
+    width: 100%;
+    margin-top: 12px;
+  }
+}
+
