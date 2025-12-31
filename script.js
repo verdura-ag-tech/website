@@ -26,16 +26,6 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
   });
 });
 
-// Fake contact submit
-const form = document.getElementById("contactForm");
-const note = document.getElementById("note");
-
-form?.addEventListener("submit", (e) => {
-  e.preventDefault();
-  if (note) note.textContent = "Sent (placeholder). Wire this to your backend when ready.";
-  form.reset();
-});
-
 // Year
 const year = document.getElementById("year");
 if (year) year.textContent = String(new Date().getFullYear());
