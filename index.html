@@ -1,6 +1,420 @@
-<html>
-  <!-- insert code later -->
-  <h1>
-    Welcome to Verdura.
-  </h1>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Verdura</title>
+  <meta name="description" content="Verdura: per-acre farm monitoring nodes + dashboard." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <!-- NAV -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#top" aria-label="Verdura Home">
+        <span class="brand-mark" aria-hidden="true">
+          <!-- simple leaf mark -->
+          <a class="brand" href="#top" aria-label="Verdura Home">
+            <img src="assets/verdura_logo_vector.svg" alt="Verdura logo" class="brand-logo" />
+          </a>          
+        </span>
+      </a>
+
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav-links" id="menu">
+        <a href="#technology">Technology</a>
+        <a href="#features">Features</a>
+        <a href="#team">Our Team</a>
+        <a href="#pricing">Pricing</a>
+        <a class="btn btn-primary" href="#contact">Get in touch</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-left">
+          <h1>
+            Smarter <span class="accent">Farming</span> Simpler <span class="accent">Living</span> 
+          </h1>
+
+          <p class="lead">
+            Verdura uses solar-powered, LoRa sensors and AI to monitor surrounding environmental conditions to give instantaneous insights and reports to farmers.
+           </p>
+
+          <div class="hero-cards">
+            <div class="mini-card">
+              <div class="mini-top">~10</div>
+              <div class="mini-sub">nodes / acre</div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-top">5</div>
+              <div class="mini-sub">sensors / node</div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-top">6</div>
+              <div class="mini-sub">alert types</div>
+            </div>
+          </div>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#pricing">See pricing</a>
+            <a class="btn btn-ghost" href="#technology">Technical specs</a>
+          </div>
+        </div>
+
+        <div class="hero-right">
+            <div class="map-card" aria-label="Field Overview Map">
+              <div class="map-head">
+                <h3>Field Overview Map</h3>
+          
+                <div class="legend" aria-label="Node legend">
+                  <span class="lg"><i class="dot on"></i> Online</span>
+                  <span class="lg"><i class="dot warn"></i> Warning</span>
+                  <span class="lg"><i class="dot off"></i> Offline</span>
+                </div>
+              </div>
+          
+              <div class="map-area" role="img" aria-label="Grid map with Verdura nodes">
+                <!-- Nodes (positions are % based so it scales) -->
+                <button class="node on" style="left: 18%; top: 22%;" data-name="Node A1" data-status="Online" aria-label="Node A1, Online"></button>
+                <button class="node on" style="left: 47%; top: 15%;" data-name="Node A2" data-status="Online" aria-label="Node A2, Online"></button>
+                <button class="node warn" style="left: 70%; top: 26%;" data-name="Node B3" data-status="Warning" aria-label="Node B3, Warning"></button>
+                <button class="node on" style="left: 26%; top: 55%;" data-name="Node C4" data-status="Online" aria-label="Node C4, Online"></button>
+                <button class="node on" style="left: 58%; top: 60%;" data-name="Node D2" data-status="Online" aria-label="Node D2, Online"></button>
+                <button class="node off" style="left: 80%; top: 67%;" data-name="Node E5" data-status="Offline" aria-label="Node E5, Offline"></button>
+          
+                <!-- Tooltip -->
+                <div class="tooltip" id="mapTip" role="status" aria-live="polite" hidden>
+                  <div class="tip-name" id="tipName">Node</div>
+                  <div class="tip-status" id="tipStatus"><span class="pill-status"></span><span class="tip-text">Status</span></div>
+                </div>
+          
+                <!-- bottom "learn more" like your figma -->
+                <a class="learn-more-float" href="#technology" aria-label="Learn more about the technology">
+                    <span class="lm-text">Learn more</span>
+                    <span class="lm-arrow" aria-hidden="true">↓</span>
+                </a>                  
+              </div>
+            </div>
+          </div>          
+    </section>
+
+    <!-- SUPPORTED BY -->
+    <section class="support">
+      <div class="container">
+        <h3 class="support-title">Supported by</h3>
+        <div class="support-logos">
+          <div class="logo-box">Local Farms</div>
+          <div class="logo-box">Ag Partners</div>
+          <div class="logo-box">School Lab</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT IS -->
+    <section class="section">
+      <div class="container">
+        <h2 class="center">What is Verdura?</h2>
+        <p class="center subtext">
+         Verdura is a solar-powered, LoRa-enabled IoT system that gives real time environmental insights to farmers through its multi-node sensing network.
+        Verdura uses sensor nodes to monitor temperature, humidity, soil moisture, and pH and give reports by our own Verdura AI model.
+         Our goal: to provide a low cost product that addresses modern day farmers' need for more affordable and data driven crop management methods.
+        </p>
+
+        <div class="triple">
+          <div class="triple-item">
+            <h3>Measure</h3>
+            <p>Records accurate and precise readings across multiple zones for faultless insights.</p>
+          </div>
+          <div class="triple-item">
+            <h3>Compare</h3>
+            <p>Spot differences between zones to prioritize irrigation and catch stress early.</p>
+          </div>
+          <div class="triple-item">
+            <h3>Act</h3>
+            <p>Trigger alerts and export reports that farmers and agronomists can actually use and understand.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- KEY BENEFITS BOX (WiFind vibe) -->
+    <section class="section light">
+      <div class="container">
+        <div class="benefits-box">
+          <h3>Key Benefits</h3>
+
+          <ul class="checks">
+            <li>Zone-based monitoring: designed around variability inside a single acre</li>
+            <li>Low-power nodes with battery/solar options for real deployments</li>
+            <li>Alerts for moisture drops, heat stress risk, frost risk, and anomalies</li>
+            <li>Per-acre kit pricing — you own the hardware</li>
+          </ul>
+
+          <a class="btn btn-primary" href="#technology">
+            Learn more about our technology <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- TECHNOLOGY -->
+    <section class="section" id="technology">
+      <div class="container">
+        <h2>The Technology</h2>
+        <p class="subtext">
+          Verdura’s hardware and data pipeline are built to stay simple: deployable, maintainable, and easy to explain.
+        </p>
+
+        <div class="two-col">
+          <div class="spec-list">
+            <div class="spec">
+              <div class="spec-ic">🌾</div>
+              <div>
+                <h4>Field Nodes (~10 / acre)</h4>
+                <p>Distributed sensor placement to capture zone-level variation.</p>
+              </div>
+            </div>
+
+            <div class="spec">
+              <div class="spec-ic">💧</div>
+              <div>
+                <h4>Soil + Microclimate Sensors</h4>
+                <p>MVP bundle: soil moisture, temperature, humidity, light (expand later).</p>
+              </div>
+            </div>
+
+            <div class="spec">
+              <div class="spec-ic">📡</div>
+              <div>
+                <h4>Backhaul (LoRa/Wi-Fi/Cellular)</h4>
+                <p>Start with what your pilot farms can support; keep the pipeline modular.</p>
+              </div>
+            </div>
+
+            <div class="spec">
+              <div class="spec-ic">🧠</div>
+              <div>
+                <h4>Dashboard + Alerts</h4>
+                <p>Trends, thresholds, and exports — keep the first version clean and useful.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="spec-image">
+            <div class="image-placeholder">
+              <div class="img-title">Hardware render placeholder</div>
+              <div class="img-sub">Replace with your node enclosure photo / CAD render later.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="section light" id="features">
+      <div class="container">
+        <h2>Features</h2>
+        <p class="subtext">Designed for real farms: simple UI, measurable improvements, fast iteration.</p>
+
+        <div class="grid">
+          <article class="card">
+            <h3>Zone-level Insights</h3>
+            <p>Compare zones and find outliers so irrigation goes where it matters most.</p>
+          </article>
+          <article class="card">
+            <h3>Moisture Alerts</h3>
+            <p>Trigger alerts when readings drop below a threshold for a sustained time window.</p>
+          </article>
+          <article class="card">
+            <h3>Heat + Frost Risk</h3>
+            <p>Microclimate tracking for risk flags (simple thresholds at MVP).</p>
+          </article>
+          <article class="card">
+            <h3>Deployable Hardware</h3>
+            <p>Low-power nodes built to survive field conditions with replaceable components.</p>
+          </article>
+          <article class="card">
+            <h3>Integration Ready</h3>
+            <p>Clean API/data model so you can swap radios/backends without rebuilding everything.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEAM -->
+    <section class="section" id="team">
+      <div class="container">
+        <h2 class="center">Our Team</h2>
+        <p class="center subtext">Add real names/photos later — this is a clean placeholder layout.</p>
+
+        <div class="team">
+          <div class="team-card">
+            <div class="avatar">R</div>
+            <div class="name">Rishi Nagabandi</div>
+            <div class="role">CEO</div>
+          </div>
+          <div class="team-card">
+            <div class="avatar">V</div>
+            <div class="name">Vivaan Khambhati</div>
+            <div class="role">Hardware Manager; CTO</div>
+          </div>
+          <div class="team-card">
+            <div class="avatar">C</div>
+            <div class="name">Chen Meng Shih</div>
+            <div class="role">Operational Manager; COO</div>
+          </div>
+          <div class="team-card">
+            <div class="avatar">E</div>
+            <div class="name">Ethan Anoop</div>
+            <div class="role">UI Manager and CUIO</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="section light" id="pricing">
+      <div class="container">
+        <h2 class="center">Pricing</h2>
+        <p class="center subtext">
+          Verdura is priced per acre (one-time kit). Optional support is available but not required.
+        </p>
+
+        <div class="pricing">
+          <div class="price-card">
+            <h3>Field Kit</h3>
+            <div class="price">
+              <span class="big">$17.40</span>
+              <span class="unit">per acre</span>
+            </div>
+            <p class="muted">One-time purchase. Includes 10 nodes / acre + core dashboard setup.</p>
+
+            <h4>What’s included</h4>
+            <ul>
+              <li>15x sensor nodes per acre</li>
+              <li>MVP bundle per node</li>
+              <li>Initial calibration checklist</li>
+              <li>Basic dashboard + CSV export</li>
+            </ul>
+
+            <a class="btn btn-primary w100" href="#contact">Request quote</a>
+          </div>
+
+          <div class="price-card">
+            <h3>Deployment Add-On (Optional)</h3>
+            <div class="price">
+              <span class="big">$20</span>
+              <span class="unit">per acre</span>
+            </div>
+            <p class="muted">Optional. For farms that want installation help + early support.</p>
+
+            <h4>What’s included</h4>
+            <ul>
+              <li>On-site placement plan (zones)</li>
+              <li>Install + verify node health</li>
+              <li>Alert threshold tuning</li>
+              <li>30-day pilot support window</li>
+            </ul>
+
+            <a class="btn btn-ghost w100" href="#contact">Get in touch</a>
+          </div>
+        </div>
+
+        <p class="fineprint center">
+          *Prices shown are starter targets for pilots; final pricing depends on sensors, enclosure, and backhaul choice.
+        </p>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+      <div class="container">
+        <h2 class="center">Get in Touch</h2>
+        <p class="center subtext">Have a farm pilot in mind? Send details and we’ll respond.</p>
+
+        <div class="contact-grid">
+          <div class="contact-info">
+            <h3>Contact Information</h3>
+            <p class="muted">
+              Share your acreage, crop type, and what you want to measure. If you already know your connectivity constraints
+              (cellular/no-cell/LoRa), mention that too.
+            </p>
+
+            <div class="contact-item">
+              <div class="label">Email</div>
+              <a href="mailto:pilot@verdura.ai" class="link-accent"></a>
+            </div>
+
+            <div class="contact-item">
+              <div class="label">Phone</div>
+              <div class="muted">(571) 788-7136</div>
+            </div>
+          </div>
+
+          <form class="form" id="contactForm">
+            <h3>Send us a message</h3>
+
+            <label>
+              Name
+              <input name="name" required placeholder="Your name" />
+            </label>
+
+            <label>
+              Email
+              <input name="email" type="email" required placeholder="you@domain.com" />
+            </label>
+
+            <label>
+              Organization
+              <input name="org" placeholder="Farm / company (optional)" />
+            </label>
+
+            <label>
+              Message
+              <textarea name="message" rows="6" placeholder="Acreage, crops, location, what you want to measure"></textarea>
+            </label>
+
+            <button class="btn btn-primary w100" type="submit">Send Message</button>
+            <div class="note" id="note" aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container footer-grid">
+        <div>
+          <div class="footer-brand">Verdura</div>
+          <div class="muted">Per-acre farm monitoring kits.</div>
+          <div class="social">
+            <a href="https://www.instagram.com/verduraag/" aria-label="Instagram">🏠</a>
+            <a href="#technology" aria-label="Docs">🌾</a>
+          </div>
+        </div>
+
+        <div class="footer-links">
+          <a href="#technology">Technology</a>
+          <a href="#features">Features</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+
+      <div class="container tiny">
+        © <span id="year"></span> Verdura. All rights reserved.
+      </div>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
 </html>
