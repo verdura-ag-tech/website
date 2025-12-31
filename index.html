@@ -7,7 +7,7 @@
   <title>Verdura</title>
   <meta name="description" content="Verdura: per-acre farm monitoring nodes + dashboard." />
   <link rel="stylesheet" href="styles.css" />
-  <link rel="icon" href="verdura_logo_vector.svg" type="image/svg+xml" sizes="any">
+  <link rel="icon" href="assets/verdura_logo_vector.svg" type="image/svg+xml" sizes="any">
 </head>
 
 <body>
@@ -17,7 +17,7 @@
       <a class="brand" href="#top" aria-label="Verdura Home">
         <span class="brand-mark" aria-hidden="true">
           <a class="brand" href="#top" aria-label="Verdura Home">
-            <img src="verdura_logo_vector.svg" alt="Verdura logo" class="brand-logo" />
+            <img src="assets/verdura_logo_vector.svg" alt="Verdura logo" class="brand-logo" />
           </a>
         </span>
       </a>
@@ -107,18 +107,6 @@
         </div>
     </section>
 
-    <!-- SUPPORTED BY -->
-    <section class="support">
-      <div class="container">
-        <h3 class="support-title">Supported by</h3>
-        <div class="support-logos">
-          <div class="logo-box">Local Farms</div>
-          <div class="logo-box">Ag Partners</div>
-          <div class="logo-box">TJHSST</div>
-        </div>
-      </div>
-    </section>
-
     <!-- WHAT IS -->
     <section class="section">
       <div class="container">
@@ -166,54 +154,77 @@
       </div>
     </section>
 
-    <!-- TECHNOLOGY -->
+    <!-- TECHNOLOGY (UPDATED: diagram + callouts) -->
     <section class="section" id="technology">
       <div class="container">
         <h2>The Technology</h2>
         <p class="subtext">
-          Verdura’s hardware and data pipeline are built to stay simple: deployable, maintainable, and easy to explain.
+          Verdura nodes are designed for fast deployment, field durability, and clean data collection—without complicated setup.
         </p>
+        <div class="tech-diagram">
+          <div class="tech-soil-bg" aria-hidden="true"></div>
 
-        <div class="two-col">
-          <div class="spec-list">
-            <div class="spec">
-              <div class="spec-ic">🌾</div>
-              <div>
-                <h4>Field Nodes (~10 / acre)</h4>
-                <p>Distributed sensor placement to capture zone-level variation.</p>
+          <div class="tech-visual" role="img" aria-label="Verdura node diagram with callouts">
+            <!-- Replace with your real CAD/render image file -->
+            <img
+              src="assets/CAD.png"
+              alt="Verdura node CAD"
+              class="tech-img"
+            />
+
+            <div class="callout c1">
+              <div class="callout-ic">ᯤ</div>
+              <div class="callout-text">
+                <div class="callout-title">LoRa Connectivity</div>
+                <div class="callout-sub">LoRa range optimized for pilots</div>
               </div>
             </div>
 
-            <div class="spec">
-              <div class="spec-ic">💧</div>
-              <div>
-                <h4>Soil + Microclimate Sensors</h4>
-                <p>MVP bundle: soil moisture, temperature, humidity, light (expand later).</p>
+            <div class="callout c2">
+              <div class="callout-ic">🔋</div>
+              <div class="callout-text">
+                <div class="callout-title">Solar Powered</div>
+                <div class="callout-sub">Charges in the sun, perfect for agriculture</div>
               </div>
             </div>
 
-            <div class="spec">
-              <div class="spec-ic">📡</div>
-              <div>
-                <h4>Backhaul (LoRa/Wi-Fi/Cellular)</h4>
-                <p>Start with what your pilot farms can support; keep the pipeline modular.</p>
+            <div class="callout c3">
+              <div class="callout-ic">🧪</div>
+              <div class="callout-text">
+                <div class="callout-title">Internal telemetry</div>
+                <div class="callout-sub">Soil and Outside conditions</div>
               </div>
             </div>
 
-            <div class="spec">
-              <div class="spec-ic">🧠</div>
-              <div>
-                <h4>Dashboard + Alerts</h4>
-                <p>Trends, thresholds, and exports — keep the first version clean and useful.</p>
+            <div class="callout c4">
+              <div class="callout-ic">🪛</div>
+              <div class="callout-text">
+                <div class="callout-title">Easy Installation</div>
+                <div class="callout-sub">Consistent installs across farms</div>
+              </div>
+            </div>
+
+            <div class="callout c5">
+              <div class="callout-ic">⚙️</div>
+              <div class="callout-text">
+                <div class="callout-title">Design</div>
+                <div class="callout-sub">Fast and clear insertion + stable placements</div>
+              </div>
+            </div>
+
+            <div class="callout c6">
+              <div class="callout-ic">🌡️</div>
+              <div class="callout-text">
+                <div class="callout-title">Sensors</div>
+                <div class="callout-sub">Contains 7 Sensors providing plenty info </div>
               </div>
             </div>
           </div>
 
-          <div class="spec-image">
-            <div class="image-placeholder">
-              <div class="img-title">Hardware render placeholder</div>
-              <div class="img-sub">Replace with your node enclosure photo / CAD render later.</div>
-            </div>
+          <div class="tech-foot">
+            <span class="muted">
+              Hardware details shown are pilot targets; final enclosure/sensor stack may change as testing continues.
+            </span>
           </div>
         </div>
       </div>
@@ -404,7 +415,7 @@
               <input name="crops" placeholder="e.g., rice, maize, vegetables" />
             </label>
 
-            <label>
+            <label class="form-dropdown">
               Timeline
               <select name="timeline" required>
                 <option value="" selected disabled>Select one</option>
@@ -459,6 +470,7 @@
     </footer>
   </main>
 
+  <!-- Inline JS: year + form submit (keeps you on-page) -->
   <script>
     // Year
     (function () {
